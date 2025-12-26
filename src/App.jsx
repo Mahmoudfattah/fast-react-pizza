@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 import Home from './ui/Home'
 import Menu,{Loader as menuloader} from './features/menu/Menu'
 import Cart from './features/cart/Cart'
@@ -10,7 +10,7 @@ import Error from './ui/Error'
 
 import  { Toaster } from 'react-hot-toast';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     element:<AppLayout/>,
     errorElement: <Error/>,
