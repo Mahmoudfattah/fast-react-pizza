@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* 👇 Tailwind v4 theme config (بدل tailwind.config.js) */
+@theme {
+  /* Roboto as default sans stack */
+  --font-sans: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --h-screen: 100dvh;   /* override default */
+}
+
+/* 🌈 Components layer */
+@layer components {
+  .input {
+    @apply rounded-full text-sm bg-stone-100 px-4 py-3 
+      placeholder:text-stone-400 transition-all duration-300
+      font-semibold text-stone-400 border border-stone-200
+      md:px-6 md:py-3
+      focus:ring focus:ring-yellow-400 focus:outline-none;
+  }
+
+  .loader {
+    width: 45px;
+    aspect-ratio: 0.75;
+    /* نستخدم متغير اللون بتاع Tailwind v4 بدل theme() */
+    --c: no-repeat linear-gradient(var(--color-stone-800) 0 0);
+    background: var(--c) 0% 50%, var(--c) 50% 50%, var(--c) 100% 50%;
+    background-size: 20% 50%;
+    animation: loading 1s infinite linear;
+  }
+}
+
+/* 🔁 الحركة بتاعة اللودر */
+@keyframes loading {
+  20% {
+    background-position: 0% 0%, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0% 100%, 50% 0%, 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%, 50% 100%, 100% 0%;
+  }
+  80% {
+    background-position: 0% 50%, 50% 50%, 100% 100%;
+  }
+}
+
+/* 🌍 Global styles */
+body {
+  font-family: var(--font-sans);
+  background-color: #f7f7f7;
+  color: #444;
+}
+
+.layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 32px;
+  height: 100dvh;
+}
+/* Scrollbar style */
+::-webkit-scrollbar {
+  width: 6px;          /* skinny */
+}
+
+::-webkit-scrollbar-track {
+  background: #fafaf9; /* stone-50 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #facc15; /* yellow-400 */
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ca8a04; /* yellow-600 */
+}
